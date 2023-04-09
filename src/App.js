@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Forecast from "./components/Forecast";
 import Inputs from "./components/Inputs";
 import TempratureAndDetails from "./components/TempratureAndDetails";
 import TimeAndLocation from "./components/TimeAndLocation";
 import TopButtons from "./components/TopButtons";
 import getFormattedWeatherData from "./services/weatherServices";
-import getWeatherData from "./services/weatherServices";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -21,7 +19,7 @@ function App() {
       const message = city.q ? city.q : "current location.";
 
       toast.info("Fetching weather for " + message )
-      const data = await getFormattedWeatherData({ ...city, units }).then(
+       await getFormattedWeatherData({ ...city, units }).then(
         (data) => {
 
           toast.success(`Succesfully fetched weather for ${data.name},${data.country}`)
